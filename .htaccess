@@ -1,0 +1,55 @@
+RewriteEngine on
+RewriteRule ^user[^/]*/([^/]+)/?$ /user.php?user=$1 [L]
+RewriteRule ^mayda[ys]/?$ / [R=301,L]
+RewriteRule ^track.css mayday.css [T=text/css,L]
+RewriteRule ^mayday\.css mayday.css [T=text/css,L]
+RewriteRule ^newuser/?$ /newuser.php [L]
+RewriteRule ^login/?$ /login.php [L]
+RewriteRule ^logout/?$ /logout.php [L]
+RewriteRule ^latest/?$ /latest.php [L]
+RewriteRule ^users?/?$ /users.php [L]
+RewriteRule ^nag[^/]*/([^/]+)/?$ /nag.php?user=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/profile/?$ /profile.php?user=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/history/?$ /history.php?who=$1&page=1 [QSA,L]
+RewriteRule ^user[^/]*/([^/]+)/history/([^/]*)/?$ /history.php?who=$1&page=$2 [QSA,L]
+
+RewriteRule ^user[^/]*/([^/]+)/(\d{4}-\d{2}-\d{2})/?$ /day.php?date=$2&who=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/(\d{4}-\d{2}-\d{2})/json/?$ /day.php?output=json&date=$2&who=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(\d{4})/(\d{2})/(\d{2})/?$ /day.php?date=$2-$3-$4&who=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/(\d{4})/(\d{2})/(\d{2})/json/?$ /day.php?output=json&date=$2-$3-$4&who=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(\d{4}-\d{2}-\d{2})/?$ /day.php?date=$2&who=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/(\d{4}-\d{2}-\d{2})/json/?$ /day.php?output=json&date=$2&who=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(\d{4}-\d{2}-\d{2})/json/?$ /day.php?output=json&date=$2&who=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(\d{4})/(\d{2})/(\d{2})/?$ /day.php?date=$2-$3-$4&who=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/(\d{4})/(\d{2})/(\d{2})/json/?$ /day.php?output=json&date=$2-$3-$4&who=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(yesterday|today)/?$ /day.php?who=$1&date=$2 [L]
+RewriteRule ^user[^/]*/([^/]+)/(yesterday|today)/json/?$ /day.php?output=json&who=$1&date=$2 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/([^/]+)/?$ /cal.php?user=$1&var=$2 [L]
+RewriteRule ^user[^/]*/([^/]+)/([^/]+)/json/?$ /cal.php?output=json&user=$1&var=$2 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/(yesterday|today)/?$ /day.php?date=$2&who=$1 [L]
+RewriteRule ^user[^/]*/([^/]+)/(yesterday|today)/json/?$ /day.php?output=json&date=$2&who=$1 [L]
+
+RewriteRule ^edit/([0-9]+)/? /edit_stat.php?id=$1 [QSA,L]
+RewriteRule ^update/?$ /update_stat.php [L]
+RewriteRule ^ubbt/?$ /mark.php?mark=ubbt [L]
+RewriteRule ^about/?$ /about.php [L]
+#RewriteRule ^mark[^/]*/(.*)/?$ /mark.php?mark_id=$1 [L]
+RewriteRule ^mark[^/]*/(.*)/?$ /contest/$1 [R]
+RewriteRule ^contest/(.*)/?$ /mark.php?mark_id=$1 [L]
+RewriteRule ^mark/?$ /openmarks.php [L]
+RewriteRule ^contest/?$ /openmarks.php [L]
+RewriteRule ^(yesterday|today)/?$ /day.php?date=$1 [L]
+RewriteRule ^(yesterday|today)/(.*)/?$ /day.php?date=$1&who=$2 [L]
+#RewriteRule ^(yesterday|today)/(.*}/?$ /day.php?date=$1&who=$2 [L]
+RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/?$ /day.php?date=$1-$2-$3 [L]
+RewriteRule ^([0-9]{4})/([0-9]{2})/([0-9]{2})/(.*)$ /day.php?date=$1-$2-$3&who=$4 [L]
+RewriteRule ^(...+)/(yesterday|today)/?$ /day.php?date=$2&who=$1 [L]
+RewriteRule ^(.*)/([0-9]{4})/([0-9]{2})/([0-9]{2})/? /day.php?date=$2-$3-$4&who=$1 [L]
+#RewriteRule ^(...+)/?$ /day.php?who=$1 [L]
