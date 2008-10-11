@@ -59,7 +59,7 @@ function get_cz($col, $rev = 0, $tz = 0) {
 require_once("Smarty.class.php");
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 $t = new smarty;
-$t->template_dir = "templates";
+$t->template_dir = "templates/";
 // For other compile and cache directory options, see the comment by Pablo Veliz at the bottom of this article.
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
