@@ -9,9 +9,9 @@ function handleErrors($error) {
 PEAR::setErrorHandling(PEAR_ERROR_CALLBACK, 'handleErrors');
 $dsn = array(
     'phptype' => "mysql",
-    'database' => "********" . (($use_db) ? "_$use_db": "_mayday"),
-    'username' => "********",
-    'password' => "********"
+    'database' => "trackstat",
+    'username' => "USER",
+    'password' => "PASS"
 );    
 $db = DB::Connect($dsn) or die("Sorry");
 $db->setFetchMode(DB_FETCHMODE_ASSOC);
@@ -59,12 +59,12 @@ function get_cz($col, $rev = 0, $tz = 0) {
 require_once("Smarty.class.php");
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 $t = new smarty;
-$t->template_dir = "/home/kastner/templates/$app/";
+$t->template_dir = "templates";
 // For other compile and cache directory options, see the comment by Pablo Veliz at the bottom of this article.
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
 // Because you should never touch smarty files, store your custom smarty functions, modifiers, etc. in /include
-$t->plugins_dir = array('/home/kastner/plugins', 'plugins');
+$t->plugins_dir = array('plugins');
 
 // Change comment on these when you're done developing to improve performance
 #$t->force_compile = true;
@@ -80,11 +80,5 @@ if ($my_username) {
     $t->assign("username", $my_username);
 }
 
-if ($app == "mayday") {
-    $base = "http://mayday.metaatem.info";
-}
-else {
-    $base = "http://trackstat.us";
-}
+$base = "http://trackstat.us";
 $t->assign("base", $base);
-?>
