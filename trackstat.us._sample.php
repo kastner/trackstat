@@ -36,6 +36,16 @@ if ($_COOKIE["u"]) {
     //var_dump($user);
 }
 
+if ($_SERVER['PHP_AUTH_USER'] && $_SERVER['PHP_AUTH_PW'] && !$my_id) {
+    // authenticated API request
+    $user = $db->getRow("select id, username from users where email = ? and password = password(?)",  Array($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']));
+    if ($user) {
+        $my_username = $user["username"];
+        $my_id = $user["id"];
+        unset($user);
+    }
+}
+
 $cz = "convert_tz(added, \"-0:00\", \"$mytz\")";
 
 function get_cz($col, $rev = 0, $tz = 0) {
