@@ -1,4 +1,5 @@
 RewriteEngine on
+RewriteRule ^api/v([\d\.]+/(.*) /api.php?method=$1 [L]
 RewriteRule ^user[^/]*/([^/]+)/?$ /user.php?user=$1 [L]
 RewriteRule ^mayda[ys]/?$ / [R=301,L]
 RewriteRule ^track.css mayday.css [T=text/css,L]

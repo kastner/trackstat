@@ -26,7 +26,7 @@ if ($who) {
 }
 
 if (!$s_id) {
-    err_die("Sorry - must suply a username to search for.");
+    err_die("Sorry - must supply a username to search for.");
 }
 if (!preg_match("/\d{4}-\d\d-\d\d/", $date)) {
     err_die("Sorry - date must be in YYYY-MM-DD format.");
