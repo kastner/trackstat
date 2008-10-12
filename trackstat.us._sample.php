@@ -36,6 +36,11 @@ if ($_COOKIE["u"]) {
     //var_dump($user);
 }
 
+if ($_POST['api_user'] && $_POST['api_password']) {
+  $_SERVER['PHP_AUTH_USER'] = $_POST['api_user'];
+  $_SERVER['PHP_AUTH_PW'] = $_POST['api_password'];
+}
+
 if ($_SERVER['PHP_AUTH_USER'] && $_SERVER['PHP_AUTH_PW'] && !$my_id) {
     // authenticated API request
     $user = $db->getRow("select id, username from users where email = ? and password = password(?)",  Array($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']));
