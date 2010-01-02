@@ -1,0 +1,188 @@
+body {
+    font-family: "Trebuchet MS", trebuchet, verdana, sans-serif;
+    font-size: 18px;
+    color: #555;
+    margin:20px;
+    background-color: #eef;
+    border: 1px solid black;
+}
+h1, h2, h3, h4 {
+    margin: 4px 0;
+    padding: 0px;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.thinTableSmall {
+    border-collapse: collapse;
+}
+.thinTableSmall td,tr,tbody,thead {
+    padding: 4px;
+}
+.searchTop {
+    background-color: #ddd;
+}
+.searchRes1 {
+    background-color: #aaa;
+}
+.searchRes2 {
+    background-color: #ccc;
+}
+.red {
+    color: red;
+}
+.date_words {
+    color: #077;
+}
+.mailto {
+    border: 1px solid black;
+    padding: 4px;
+    background-color: #888;
+    width: 100px;
+    font-size: 13px;
+    text-align: center;
+}
+.mailto a {
+    color: white;
+    text-decoration: none;
+}
+
+.status {
+    color: #ccc;
+}
+
+#top {
+    background-color: #77c;
+}
+    #logo {
+        padding: 10px;
+    }
+        #logo a {
+            font-size: 20pt;
+            text-decoration: none;
+            color: black;
+        }
+    #nav {
+        margin: 0;
+        padding: 0;
+        background-color:#999;
+        border: 1px solid #000;
+        border-left: 0;
+        border-right: 0;
+    }
+        #nav ul {
+            display:inline;
+            list-style:none;
+            margin: 0;
+        }
+        #nav li {
+            margin: 0;
+            display: inline;
+            position: relative;
+            list-style: none;
+            padding: 0 10px;
+            border-right: 1px solid #000;
+            font-family: verdana, sans-serif;
+        }
+            #nav li ul {
+                margin: 0;
+                padding: 0;
+                background-color:#999;
+                color: white;
+                border: 1px solid #000;
+                border-top: none;
+                position: absolute; 
+                top: 1.3em;
+                left: -999em;
+            }
+            #nav li > ul {
+                top: auto;
+            }
+                #nav li ul li {
+                    display: block;
+                    border: 0;
+                    border-top: 1px solid #000;
+                    width: 10em;
+                }
+                #nav li:hover ul, #nav li.sfhover ul { /* lists nested under hovered list items */
+                    left: -0.3em;
+                    display:block;
+                }
+        #nav li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 10pt;
+            padding: 2px 8px;
+        }
+        #nav .current {
+        }
+
+#main {
+    clear: both;
+    padding: 6px;
+    background-color: #fff;
+}
+.mark {
+}
+    .mark span {
+        color: red;
+    }
+    
+#newuserform {
+}
+    #newuserform label {
+        margin-right: 5px;
+        margin-top: 6px;
+        display:block;
+        float: left;
+        width: 140px;
+        text-align: right;
+    }
+    #newuserform label:after {
+        clear: both;
+    }
+    #newuserform select {
+        font-size: 12pt;
+        margin-top: 6px;
+    }
+    #newuserform input {
+        font-size: 12pt;
+        margin-top: 6px;
+    }
+
+#profileLink {
+    font-size: 10pt;
+}
+    #profileLink a {
+        text-decoration: none;
+    }
+
+#dates span {
+    padding: 0 40px;
+}
+
+.edit_entry {
+    font-size: 11px;
+}
+#footer {
+    margin: 0;
+    padding: 5px;
+    padding-top: 20px;
+    margin-top: -11px;
+    text-align: center;
+    font-size: 11px;
+    background-color: #fff;
+}
+    #footer ul {
+        display: inline;
+        list-style-type: none;
+    }
+        #footer ul li {
+            display: inline;
+            border-left: 1px solid #ccc;
+            padding: 0 8px;
+        }
+            #footer #first {
+                border-left: 0;
+            }

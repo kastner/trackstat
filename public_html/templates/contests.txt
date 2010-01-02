@@ -1,0 +1,3 @@
+<ul>
+    <li><a href="/contest/4">John and Erik 2</a></li>
+</ul>

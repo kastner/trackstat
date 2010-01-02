@@ -1,0 +1,6 @@
+* Add "daily" column to user.php
+* Add "Measurement" section to user.php (and marks?)
+  ** This is to allow for things like weight that we don't care about the daily average.
+
+* Finish newuser.php
+* Add to the about a Howto section
