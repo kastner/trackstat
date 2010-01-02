@@ -1,4 +1,4 @@
-trackstat.us.php
+lib/config.inc
 stats/
 templates/cache
 templates/compile
