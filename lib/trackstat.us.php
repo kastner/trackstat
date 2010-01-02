@@ -7,12 +7,8 @@ function handleErrors($error) {
     echo "A more detailed error description: " . $error->getDebugInfo() . "<br>\n";
 }
 PEAR::setErrorHandling(PEAR_ERROR_CALLBACK, 'handleErrors');
-$dsn = array(
-    'phptype' => "mysql",
-    'database' => "kastner" . (($use_db) ? "_$use_db": "_mayday"),
-    'username' => "kastner",
-    'password' => "90m@s"
-);    
+
+include("config.inc");
 $db = DB::Connect($dsn) or die("Sorry");
 $db->setFetchMode(DB_FETCHMODE_ASSOC);
 
@@ -74,8 +70,7 @@ function get_cz($col, $rev = 0, $tz = 0) {
 require_once("Smarty.class.php");
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 $t = new smarty;
-$t->template_dir = "/home/kastner/templates/$app/";
-// For other compile and cache directory options, see the comment by Pablo Veliz at the bottom of this article.
+$t->template_dir = "templates/";
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
 // Because you should never touch smarty files, store your custom smarty functions, modifiers, etc. in /include
@@ -96,7 +91,7 @@ if ($my_username) {
 }
 
 if ($app == "mayday") {
-    $base = "http://mayday.metaatem.info";
+    $base = "http://mayday.metaatem.net";
 }
 else {
     $base = "http://trackstat.us";
