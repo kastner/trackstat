@@ -8,5 +8,8 @@
             trackstat.us &copy; 2005 Erik Kastner &lt;kastner@gmail.com&gt;<br/>
             Please contact <a href="mailto:kastner@gmail.com">kastner@gmail.com</a> with any questions or suggestions
         </div>
+        <div class="page-info">
+          <!-- %%PAGE_INFO%% -->
+        </div>
     </body>
 </html>
