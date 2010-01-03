@@ -76,6 +76,7 @@ require "Template.php";
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 
 $t = new Template;
+$t->register_function(page_info, "template_page_info");
 $t->template_dir = "../templates/";
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
