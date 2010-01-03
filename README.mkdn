@@ -8,5 +8,7 @@ After some deliberation, I geekily decided that this site should not only track 
 
 And thus, [trackstat.us](trackstat.us) was born.
 
-The code is bad, but not as bad as I remember. I should rewrite it in Rails or Merb or something... but barring that,
-I decided the code should be free.
+Update 2010-01-03
+------------------
+
+This site is back under active development. My general roadmap is in the TODO. Take a look and contribute if you'd like.
