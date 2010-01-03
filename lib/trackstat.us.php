@@ -70,11 +70,11 @@ function get_cz($col, $rev = 0, $tz = 0) {
 require_once("Smarty.class.php");
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 $t = new smarty;
-$t->template_dir = "templates/";
+$t->template_dir = "../templates/";
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
 // Because you should never touch smarty files, store your custom smarty functions, modifiers, etc. in /include
-$t->plugins_dir = array('/home/kastner/plugins', 'plugins');
+$t->plugins_dir = array('plugins', '../smarty_plugins');
 
 // Change comment on these when you're done developing to improve performance
 #$t->force_compile = true;
