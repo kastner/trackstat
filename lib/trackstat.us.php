@@ -1,17 +1,11 @@
 <?php
 $GLOBALS["page_start"] = microtime(true);
 
-#DB stuff
-include_once("DB.php");
-function handleErrors($error) {
-    echo "An error occurred while trying to run your query.<br>\n";
-    echo "Error message: " . $error->getMessage() . "<br>\n";
-    echo "A more detailed error description: " . $error->getDebugInfo() . "<br>\n";
-}
-PEAR::setErrorHandling(PEAR_ERROR_CALLBACK, 'handleErrors');
+include "config.inc";
 
-include("config.inc");
-$db = DB::Connect($dsn) or die("Sorry");
+#DB stuff
+include "DB.php";
+$db = DB::Connect($GLOBALS["cfg"]["dsn"]) or die("Sorry");
 $db->setFetchMode(DB_FETCHMODE_ASSOC);
 
 $mytz = "-4:00";
@@ -68,12 +62,8 @@ function get_cz($col, $rev = 0, $tz = 0) {
     return "convert_tz($col, \"-0:00\", \"$tz\")";
 }
 
-$GLOBALS["cfg"]["host"] = rtrim(shell_exec("hostname"));
-
 # Template stuff
 require "Template.php";
-
-$app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
 
 $t = new Template;
 $t->register_function(page_info, "template_page_info");
@@ -97,12 +87,7 @@ if ($my_username) {
     $t->assign("username", $my_username);
 }
 
-if ($app == "mayday") {
-    $base = "http://mayday.metaatem.net";
-}
-else {
-    $base = "http://trackstat.us";
-}
+$GLOBALS["cfg"]["host"] = rtrim(shell_exec("hostname"));
 
-$t->assign("base", $base);
 $t->assign("cfg", $GLOBALS["cfg"]);
+$t->assign("base", $GLOBALS["cfg"]["base"]);
