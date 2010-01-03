@@ -1,4 +1,6 @@
 <?php
+$GLOBALS["page_start"] = microtime(true);
+
 #DB stuff
 include_once("DB.php");
 function handleErrors($error) {
@@ -66,10 +68,14 @@ function get_cz($col, $rev = 0, $tz = 0) {
     return "convert_tz($col, \"-0:00\", \"$tz\")";
 }
 
-#marty stuff
-require_once("Smarty.class.php");
+$GLOBALS["cfg"]["host"] = rtrim(shell_exec("hostname"));
+
+# Template stuff
+require "Template.php";
+
 $app = preg_replace("/(.+?)\..*$/", "$1", $_SERVER["HTTP_HOST"]);
-$t = new smarty;
+
+$t = new Template;
 $t->template_dir = "../templates/";
 $t->compile_dir = $t->template_dir . "compile/";
 $t->cache_dir = $t->template_dir . "cache/";
@@ -96,5 +102,6 @@ if ($app == "mayday") {
 else {
     $base = "http://trackstat.us";
 }
+
 $t->assign("base", $base);
-?>
+$t->assign("cfg", $GLOBALS["cfg"]);

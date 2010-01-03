@@ -1,4 +1,4 @@
 lib/config.inc
 stats/
-public_html/templates/cache/*.php
-public_html/templates/compile/*.php
+templates/cache/*.php
+templates/compile/*.php
