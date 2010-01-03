@@ -79,7 +79,7 @@ function showInput(varr) {
     else {
         ih += "<input type='hidden' name='var' value='"+varr+"' /><label>" + varr + "</label> ";
     }
-    ih += "  <input type='text' id='inputValue' name='value' />";
+    ih += "  <input type='tel' id='inputValue' name='value' />";
     ih += "<input type='submit' value='Add' /></form>";
     div.innerHTML = ih;
 
