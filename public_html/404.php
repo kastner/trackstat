@@ -9,9 +9,9 @@ array_shift($parts);
 
 # Check for username
 if (preg_match("/\w+/", $parts[0])) {
-    $user = users_find_by_username($parts[0]);
+    $user = user_find_by_username($parts[0]);
     if ($user && count($parts) == 1) {
-        redirect_to(users_url($user));
+        redirect_to(user_url($user));
     }
 }
 

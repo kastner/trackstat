@@ -8,4 +8,3 @@ switch($method) {
     $t->display("success.tpl");
     break;
 }
-?>

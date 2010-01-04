@@ -2,17 +2,27 @@ php_value include_path ".:../lib:/usr/share/php:/usr/share/php/smarty:/usr/lib/p
 php_value date.timezone "America/New_York"
 
 RewriteEngine on
+
+# Twitter api endpoints
+RewriteRule ^tapi/account/verify_credentials\.(xml|json)$ /twitter_verify.php?format=$1 [L]
+RewriteRule ^tapi/statuses/home_timeline\.(xml|json) /twitter_timeline.php?format=$1 [L]
+RewriteRule ^tapi/statuses/update\.(xml|json) /twitter_update.php?format=$1 [L]
+
+RewriteCond  %{HTTP_USER_AGENT}  ^Tweetie.*
+RewriteRule  ^$                 /twitter_fake_home.php  [L]
+
+# Simple trackstat API
 RewriteRule ^api/v([\d\.])+/(.*)$ /the_api.php?method=$2&api_version=$1 [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
-RewriteRule ^user[^/]*/([^/]+)/?$ /user.php?user=$1 [L]
-RewriteRule ^mayda[ys]/?$ / [R=301,L]
-RewriteRule ^track.css mayday.css [T=text/css,L]
-RewriteRule ^mayday\.css mayday.css [T=text/css,L]
+
 RewriteRule ^newuser/?$ /newuser.php [L]
 RewriteRule ^login/?$ /login.php [L]
 RewriteRule ^logout/?$ /logout.php [L]
 RewriteRule ^latest/?$ /latest.php [L]
 RewriteRule ^users?/?$ /users.php [L]
+
 RewriteRule ^nag[^/]*/([^/]+)/?$ /nag.php?user=$1 [L]
+
+RewriteRule ^user[^/]*/([^/]+)/?$ /user.php?user=$1 [L]
 RewriteRule ^user[^/]*/([^/]+)/profile/?$ /profile.php?user=$1 [L]
 RewriteRule ^user[^/]*/([^/]+)/history/?$ /history.php?who=$1&page=1 [QSA,L]
 RewriteRule ^user[^/]*/([^/]+)/history/([^/]*)/?$ /history.php?who=$1&page=$2 [QSA,L]
