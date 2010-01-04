@@ -1,7 +1,7 @@
 <?php
-require_once("trackstat.us.php");
-if ($_POST["username"]) {
+require_once "trackstat.us.php";
 
+if ($_POST["username"]) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     $password2 = $_POST["password2"];
@@ -47,4 +47,3 @@ if ($_POST["username"]) {
 }
 
 $t->display("newuser.tpl");
-?>

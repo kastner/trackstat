@@ -1,5 +1,6 @@
 <?php
-require_once("trackstat.us.php");
+require_once "trackstat.us.php";
+
 $user = mysql_escape_string($_REQUEST["user"]);
 $hide_zeros = $_COOKIE["hide_zeros"];
 
@@ -55,13 +56,6 @@ foreach ($hold as $var => $row) {
         $data[$var] .= "$t_val,";
     }
 }
-//var_dump($data);
-
-#$sql = "SELECT var, sum(value) as today from track t where user_id = $their_id and to_days($cn) - to_days($cz) = 0  group by var;";
-
-#foreach ($db->getAll($sql) as $row) {
-    #}
-#if ($info) {
 
 $t->assign("data", $data);
 $t->assign("user", $user);
@@ -70,5 +64,3 @@ $t->assign("their_id", $their_id);
 $t->assign("title", "$user");
 $t->assign("info", $info);
 $t->display("user.tpl");
-#}
-?>

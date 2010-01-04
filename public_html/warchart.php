@@ -1,7 +1,6 @@
 <?php
-$use_db = "mayday";
-include("charts.php");
-require_once("/home/kastner/lib/db.php");
+require_once "trackstat.us.php";
+require_once "charts.php";
 
 $mark = mysql_escape_string($_REQUEST["mark"]);
 $var = mysql_escape_string($_REQUEST["var"]);
@@ -27,13 +26,9 @@ for ($i = 0; $i<$rows[0]["days"]; $i++) {
     }
 }
 foreach($rows as $row) {
-    #print $row["day"];
     if (!in_array($row["day"], $dates)) {
-        #$dates[] = $row["day"];
-        #$dates[0][] = $row["day"];
     }
     if (in_array($row["var"], $varx)) {
-        #echo "putting $row[var] - $row[day] = $row[total]<br />";
         $day = date($dt, strtotime($row["day"]));
         $vars[$row["username"] . " - " . $row["var"]][$day]= $row["total"];
     }
@@ -49,15 +44,10 @@ foreach($vars as $var => $val) {
     foreach($dates as $day) {
         $total = ($val[$day]) ? $val[$day] : 0;
         $data[$i][] = $total;
-        #echo "$var - $day - $total<br />";
     }
 }
-#print_r($data);
 
 $chart["chart_type"] = "line";
-//$chart["axis_category"] = array("orientation"  =>  "diagonal_up");
-//$chart["chart_rect"] = Array("x"=>30, "y"=>10);
 $chart["chart_data"] = $data;
 
 sendChartData($chart);
-?>

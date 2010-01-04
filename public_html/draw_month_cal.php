@@ -1,4 +1,5 @@
 <?php
+// SMARTY!
 
 function draw_month_cal($year, $month, $vals, $href = "", $locale = 'en_US') {
     if (checkdate($month, 1, $year)) {
@@ -61,5 +62,3 @@ HTML;
    }
    return $ret;
 }
-
-?>

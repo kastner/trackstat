@@ -1,10 +1,10 @@
 <?php
 $GLOBALS["page_start"] = microtime(true);
 
-include "config.inc";
+require_once "config.inc";
 
 #DB stuff
-include "DB.php";
+require_once "DB.php";
 $db = DB::Connect($GLOBALS["cfg"]["dsn"]) or die("Sorry");
 $db->setFetchMode(DB_FETCHMODE_ASSOC);
 
@@ -91,3 +91,10 @@ $GLOBALS["cfg"]["host"] = rtrim(shell_exec("hostname"));
 
 $t->assign("cfg", $GLOBALS["cfg"]);
 $t->assign("base", $GLOBALS["cfg"]["base"]);
+
+function must_be_logged_in() {
+    if (!$GLOBALS["my_id"]) {
+        header("Location: /login.php");
+        exit;
+    }
+}

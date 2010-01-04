@@ -1,8 +1,7 @@
 <?php
-require_once("trackstat.us.php");
-if (!$my_id) {
-    echo "Sorry, must be logged in to post.";
-}
+require_once "trackstat.us.php";
+
+must_be_logged_in();
 
 $xml = mysql_escape_string($_REQUEST["xml"]);
 $var = mysql_escape_string($_POST["var"]);
@@ -14,11 +13,13 @@ $sql = "INSERT INTO track (user_id, var, value, added) VALUES (?, ?, ?, NOW());"
 if ($_POST["value"]) {
     if (!is_numeric($_POST["value"])) {
         echo "Only numbers in the value field";
-        exit();
+        exit;
     }
 }
-if ($_POST["var"] && $_POST["value"])
+
+if ($_POST["var"] && $_POST["value"]) {
     $db->query($sql, Array($my_id,$var,$value));
+}
 
 if ($xml == 1)  {
     switch($from) {
@@ -37,12 +38,11 @@ if ($xml == 1)  {
                 }
                 else {
                     $ave = sprintf("%.2f", $vals["ave"]);
-                    #$ave = number_format($ave, 2, '.', '');
                     echo "(function() { updateCell('{$my_id}_$var', '$vals[total]', '{$my_id}_{$var}_ave', '$ave', '{$my_id}_{$var}_today', '$today[today]');})();";
                 }
             }
             else {
-                echo "SOrry... Problem fetching result";
+                echo "Sorry... Problem fetching result";
             }
             break;
         case "day.php":
@@ -53,6 +53,6 @@ if ($xml == 1)  {
             echo "Sorry.... don't know where I came from";
     }
 }
-else
+else {
     header("Location: /");
-?>
+}

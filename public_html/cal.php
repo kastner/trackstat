@@ -1,6 +1,6 @@
 <?php
-require_once("trackstat.us.php");
-require_once("draw_month_cal.php");
+require_once "trackstat.us.php";
+require_once "draw_month_cal.php";
 
 $var = mysql_escape_string($_REQUEST["var"]);
 $user = mysql_escape_string($_REQUEST["user"]);
@@ -24,7 +24,6 @@ $out = "";
 
 $vars_all = $db->getAll($sql);
 foreach($vars_all as $row) {
-    #echo "$row[var], $row[total], $row[day_added]<br />\n";
     list($year, $month, $day) = preg_split("/-/", $row["day_added"]);
     $months["$year-$month"]++;
     $vals["$year-$month-$day"] = $row["total"];
@@ -49,6 +48,4 @@ if ($_REQUEST[output] == "json") {
 else {
     $t->display("cal.tpl");
 }
-exit();
-
-?>
+exit;

@@ -1,7 +1,7 @@
 <?php
-require "trackstat.us.php";
-require "user_functions.php";
-require "url_functions.php";
+require_once "trackstat.us.php";
+require_once "user_functions.php";
+require_once "url_functions.php";
 
 # Break it up into parts
 $parts = explode("/", $_SERVER["REQUEST_URI"]);

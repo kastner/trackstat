@@ -1,7 +1,5 @@
 <?php
-$use_db = "mayday";
-$no_check = 1;
-require_once("trackstat.us.php");
+require_once "trackstat.us.php";
 
 $date = mysql_escape_string($_REQUEST["date"]);
 $who = mysql_escape_string($_REQUEST["who"]);
@@ -32,13 +30,10 @@ if (!preg_match("/\d{4}-\d\d-\d\d/", $date)) {
     err_die("Sorry - date must be in YYYY-MM-DD format.");
 }
 
-if (!$who) {
-    $sql = "select username from users where user_id = $s_id;";
-    $who = $db->getOne($sql);
-}
-
 $sql = "SELECT username from users where id = $s_id;";
 $username = $db->getOne($sql);
+
+if (!$who) { $who = $username; }
 
 $their_id = $s_id;
 if ($their_id != $my_id) {
@@ -73,5 +68,3 @@ if ($_REQUEST[output] == "json") {
 else {
     $t->display("day.tpl");
 }
-
-?>
